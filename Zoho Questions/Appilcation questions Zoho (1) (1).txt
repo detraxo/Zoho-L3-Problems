@@ -1,0 +1,312 @@
+Zoho Application development Questions
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RAILWAY<<<<<<<<<<<<<<<<<<<<<<<<<<<
+1.. One application will be given. Time: 2h30m
+
+Write an application for booking railway ticket reservation system. The application should have four functionalities.
+
+Book
+Cancel
+Print booked tickets (details with summary)
+Print available tickets (details with summary)
+Conditions for booking:
+
+There are a total of 63 berths for 63 confirmed tickets, 9 berths for 18 RAC tickets and 10 tickets in waiting-list. If the waiting-list ticket count goes above 10, print as ‘No tickets available’. The following passenger details should be obtained from the user.
+
+Name
+Age
+Gender
+Berth Preference
+The tickets should not be allocated for children below age 5.But, their details should be stored. Lower berth should be allocated for persons whose age is above 60 and ladies with children if available. Side-lower berths should be allocated for RAC passengers.
+
+Conditions for cancelling:
+
+Whenever a ticket is cancelled, a ticket from RAC should be confirmed and a waiting-list ticket should move to RAC.
+
+Conditions for printing booked tickets:
+
+Print all the tickets that are filled along with the passenger details and at the end, print the total number of tickets that are filled.
+
+Conditions for printing available tickets:
+
+Print all the tickets that are unoccupied and at the end, print the total number of tickets that are unoccupied.
+
+ 	
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RAILWAY<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+
+
+
+
+A matrix game was given with 5 rules. We were asked to implement each of the rules separately.
+
+
+  R3 | -   -   - |
+  R2 | -   -   - |
+  R1 | -   -   - |
+       C1  C2  C3  
+Each of the 9 cells can either be empty or filled with an atom. R3, R2, R1 are the rays that originate from the left. C1, C2, C3 are the rays that originate from the bottom of the box.
+
+Input : Position of the atoms and the rays that gets originated from the outside of the box.
+
+  Eg.) 3
+       3 1
+       2 2
+       1 3
+       3
+       R3 C1 C3
+
+Output  : Print the box. 
+Rule 1:
+A ray that has an atom in its path should print ‘H’ (Hit) If it does not have any atoms in its path, the ray should pass to the other side.
+
+       C1      C3
+  R3 | -   -   - | R3
+  H  | -   X   - |
+  R1 | -   -   - | R1
+       C1  H   C3 
+Rule 2 & 3:
+A ray that has an atom in its diagonal adjacent position should refract.
+
+  H  | -   -   - |
+  H  | X   -   - |
+  R  | -   X   - |
+       R   H   R  
+
+Input rays: R1, R2, C3
+
+  H  | -   X   - |
+  R2 | -   -   - | C3
+     | -   -   - |
+       R2      C3  
+Rule 4:
+A ray that has atoms in both of the diagonal adjacent positions should reflect back.
+
+
+Input ray: C2
+   | -   -   - |
+   | X   -   X |
+   | -   -   - |
+         R   
+
+Input ray: R2
+     | -   X   - |
+  R  | -   -   - |
+     | -   X   - | 
+Rule 5:
+The deflection of rays should happen in the order of the input rays.
+
+Input Rays: R3, R2, C1, C3
+   H | -   X   - |
+  R2 | -   -   - | C3
+     | -   -   - |
+       R2      C3 
+The final task was to implement these rules for dynamic matrix size.
+
+
+Input : no of rows, no of columns
+  Eg.) 4 4 (row & column)
+       2 (No of atoms)
+       4 4 (Position of atom)
+       2 2 (Position of atom)
+       2 (No of rays)
+       R4 C2 (Ray number)
+
+  H  | -   -   -   X |
+     | -   -   -   - |
+     | -   X   -   - |
+     | -   -   -   - |
+           H  
+The final task was very confusing and it had to handle all the cases. There are chances for a ray to end at the starting position if the number of rows and columns are more than 5.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+1) Design a Call taxi booking application
+-There are n number of taxi’s. For simplicity, assume 4. But it should work for any number of taxi’s.
+-The are 6 points(A,B,C,D,E,F)
+-All the points are in a straight line, and each point is 15kms away from the adjacent points.
+-It takes 60 mins to travel from one point to another
+-Each taxi charges Rs.100 minimum for the first 5 kilometers and Rs.10 for the subsequent kilometers.
+-For simplicity, time can be entered as absolute time. Eg: 9hrs, 15hrs etc.
+-All taxi’s are initially stationed at A.
+-When a customer books a Taxi, a free taxi at that point is allocated
+-If no free taxi is available at that point, a free taxi at the nearest point is allocated.
+-If two taxi’s are free at the same point, one with lower earning is allocated
+-Note that the taxi only charges the customer from the pickup point to the drop point. Not the distance it travels from an adjacent point to pickup the customer.
+-If no taxi is free at that time, booking is rejected
+
+Design modules for
+
+1)    Call taxi booking 
+Input 1:
+Customer ID: 1
+Pickup Point: A
+Drop Point: B
+Pickup Time: 9
+
+Output 1:
+Taxi can be allotted.
+Taxi-1 is allotted
+
+Input 2:
+Customer ID: 2
+Pickup Point: B
+Drop Point: D
+Pickup Time: 9
+
+Output 1:
+Taxi can be allotted.
+Taxi-2 is allotted 
+(Note: Since Taxi-1 would have completed its journey when second booking is done, so Taxi-2 from nearest point A which is free is allocated)
+
+
+Input 3:
+Customer ID: 3
+Pickup Point: B
+Drop Point: C
+Pickup Time: 12
+
+Output 1:
+Taxi can be allotted.
+Taxi-1 is allotted 
+2) Display the Taxi details
+
+
+Taxi No:    Total Earnings:
+BookingID    CustomerID    From    To    PickupTime    DropTime    Amount
+   
+Output:
+Taxi-1    Total Earnings: Rs. 400
+
+1     1     A    B    9    10    200
+3    3    B    C    12    13    200
+
+Taxi-2 Total Earnings: Rs. 350
+2    2    B    D    9    11    350 
+These were just sample inputs. It should work for any input that they give.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<
+
+
+5 questions based on maze.
+
+Q1: Given a matrix dimension find the shortest path between two points.
+
+Q2: shortest path between two points and a monster is present. So we have to avoid the monster and take a shortest path or die.
+
+Q3: print the maze step by step.
+
+Q4: same as Q2 but trigger is present so we can take the trigger to shoot the monster anywhere in the maze.
+
+Q5: this is the tricky part. There are many holes in between. we should avoid them and take the shortest path.
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>
+
+
+our question was a dungeon game.
+
+An adventurer, A monster, A trigger, A treasure, Pits these are the components.
+The size and location shall be given in run time. Adventurer must reach treasure fast than monster else he dies (Hint: use absolute of distance)
+
+
+>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<
+
+
+Round 3:
+This round contained of advance programing but the logics were easy but they gave more importance to the modularity, Object oriented approach and things like that. 
+They asked to create a simple console based application for e commerce. Two user’s admin and customer with different functionalities were given. 
+The Customer has to buy items then if discount is applicable for that product he can redeem it and he can also view the Order history.  The Admin can add new items and so on.
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+We were asked to develop a mini-project ‘Invoice Management’ with the following modules :
+
+1. Add a customer
+
+2. Add an invoice
+
+3. Add items to an invoice
+
+4. List all customers
+
+5. List all invoices
+
+6. List all invoices of a customer
+
+7. Display the full details of an invoice
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<
+
+
+We were asked to design an application program for n*n tic-tac-toe game. 
+Here, you are expected to code with proper standards and in a most optimized way. And, in this round you need to find all the edge cases and corner cases yourself. 
+The interviewers won’t help you if you miss anything. So, make sure you covered all the cases before showing output to the interviewers.
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+This was an application development round. The application was TOLL PAYMENT PROCESSING .
+They insisted us to do it in a object oriented language. First they asked the design( what are all the classes and objects & what data structure do you use).
+
+Application description:
+
+There are ‘n’ number of points in a highway out of which some points collect toll.
+Each toll has its own charging scheme according to the vehicles and whether or not they
+are a VIP user.
+If they are VIP user, 20% discount apply.
+If the vehicle passes 3 toll gates, it has to pay in all the 3 toll gates according to the
+scheme of respective tolls.
+There were 4 modules.
+
+1. Given the details of vehicle type, start and destination……display the total toll paid during
+the journey and print the amount after applying the discount.
+
+2. Display the details of all the tolls…..like what are all the vehicles(vehicle number) passed
+that respective toll and the amount each vehicle paid……and the total amount charged in
+that toll.
+
+3. Display the details of all the vehicles …….like what are all the journeys did it take….the
+start and destination of the same……tolls it passed during that journey….amount paid in
+that journey…..and the total amount paid by that vehicle.
+
+4. Assume the highway as a circular path……we have to find the short route and identify
+the tolls between that route and calculate the amount.
+
+After this round , only 7 students survived for the next round.
+
+
+
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>......
